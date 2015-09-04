@@ -49,7 +49,7 @@ void Alien::Init(Input* intp)
 
 	CollisionEngine::Instance()->AddBody(col);
 
-	
+	tag = "Alien";
 }
 
 void Alien::Update()

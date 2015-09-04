@@ -35,11 +35,20 @@ void Ship::Update()
 	{
 		transform->SetPositionU(transform->GetPositionU() -= Vector3(horizontalSpeed, 0, 0));
 	}
-	if (inputPtr->IsKeyDown(VK_UP))
-	{
-		transform->SetPositionU(transform->GetPositionU() += Vector3(0,0.1f,0));
-	}
 }
+
+void Ship::DoDamage(float DamageAmount)
+{
+	health -= DamageAmount;
+	OnHealthChange(DamageAmount);
+
+}
+
+void Ship::OnHealthChange(float DamageAmount)
+{
+
+}
+
 void Ship::Init(Input* input)
 {
 	inputPtr = input;
@@ -93,6 +102,7 @@ void Ship::End()
 {
 
 }
+
 Vector3 Ship::GetPosition()
 {	
 	return transform->GetPositionU();

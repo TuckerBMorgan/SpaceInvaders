@@ -25,7 +25,7 @@ public:
 
 public:
 	virtual void Init(Input* input);
-
+	virtual void DoDamage(float damageAmout);
 	virtual void Update();
 	virtual void End();
 	Vector3 GetPosition();
@@ -35,6 +35,7 @@ protected:
 	float horizontalSpeed;
 	float x, y, z;
 	float health;
+	virtual void OnHealthChange(float amount);
 
 protected:
 	TransformComponent* transform;
