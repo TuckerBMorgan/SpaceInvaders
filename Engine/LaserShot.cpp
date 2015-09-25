@@ -3,6 +3,12 @@
 
 LaserShot::LaserShot()
 {
+
+}
+
+void LaserShot::Update()
+{
+
 }
 
 void LaserShot::OnCollision(Actor* actor)

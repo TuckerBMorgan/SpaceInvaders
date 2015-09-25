@@ -35,6 +35,10 @@ void Ship::Update()
 	{
 		transform->SetPositionU(transform->GetPositionU() -= Vector3(horizontalSpeed, 0, 0));
 	}
+	if (inputPtr->IsKeyDown(VK_SPACE))
+	{
+
+	}
 }
 
 void Ship::DoDamage(float DamageAmount)

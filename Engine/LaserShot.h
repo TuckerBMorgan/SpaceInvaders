@@ -10,4 +10,5 @@ private:
 public:
 	LaserShot();
 	void OnCollision(Actor* otherActor);
+	void Update();
 };
