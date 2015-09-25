@@ -62,5 +62,5 @@ void Game::Render()
 		}
 	}
 
-	Graphics::Instance()->Render(renderActor);
+	Graphics::Instance()->Render();
 }

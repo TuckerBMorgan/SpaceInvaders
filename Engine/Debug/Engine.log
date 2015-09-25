@@ -1,9 +1,8 @@
-﻿Build started 9/4/2015 11:25:50 AM.
+﻿Build started 9/25/2015 1:30:51 PM.
      1>Project "C:\Users\tucker\documents\visual studio 2015\Projects\Engine\Engine\Engine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _DX_ /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Graphics.cpp
-         Graphics.cpp
-     1>c:\users\tucker\documents\visual studio 2015\projects\engine\engine\graphics.cpp(122): warning C4018: '<': signed/unsigned mismatch
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _DX_ /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Ship.cpp
+         Ship.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\tucker\documents\visual studio 2015\Projects\Engine\Debug\Engine.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\tucker\documents\visual studio 2015\Projects\Engine\Debug\Engine.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\tucker\documents\visual studio 2015\Projects\Engine\Debug\Engine.lib" /MACHINE:X86 Debug\Actor.obj
          Debug\Alien.obj
@@ -16,6 +15,7 @@
          Debug\Game.obj
          Debug\Graphics.obj
          Debug\Input.obj
+         Debug\LaserShot.obj
          Debug\main.obj
          Debug\Model.obj
          Debug\ModelComponent.obj
@@ -23,10 +23,11 @@
          Debug\ShapeComponent.obj
          Debug\Ship.obj
          Debug\System.obj
+         Debug\TGUID.obj
          Debug\TransformComponent.obj
          Engine.vcxproj -> C:\Users\tucker\documents\visual studio 2015\Projects\Engine\Debug\Engine.exe
      1>Done Building Project "C:\Users\tucker\documents\visual studio 2015\Projects\Engine\Engine\Engine.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.89
+Time Elapsed 00:00:01.42

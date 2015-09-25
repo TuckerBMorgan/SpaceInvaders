@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <unordered_map>
-
+struct TGUID;
 using namespace std;
 
 class Component;
@@ -13,10 +13,13 @@ class Actor
 protected:
 	string name;
 	string tag;
+	TGUID *guid;
 	unordered_map<string, Component*> components;
 	RenderComponent* renderer;
 	ModelComponent* model;
 
+
+	
 public:
 	Actor();
 	virtual void Start();

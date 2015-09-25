@@ -84,6 +84,12 @@
     <ClInclude Include="LaserShot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Tags.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Guid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="System.cpp">
@@ -146,6 +152,9 @@
     <ClCompile Include="LaserShot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TGUID.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="color.vs">
@@ -154,5 +163,6 @@
     <None Include="color.ps">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

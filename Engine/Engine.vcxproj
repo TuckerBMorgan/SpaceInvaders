@@ -153,6 +153,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GlobalStrucs.h" />
     <ClInclude Include="Graphics.h" />
+    <ClInclude Include="Guid.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Invader.h" />
     <ClInclude Include="LaserShot.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="ShapeComponent.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="System.h" />
+    <ClInclude Include="Tags.h" />
     <ClInclude Include="TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
@@ -184,9 +186,11 @@
     <ClCompile Include="ShapeComponent.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="System.cpp" />
+    <ClCompile Include="TGUID.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="color.ps" />
     <None Include="color.vs" />
   </ItemGroup>

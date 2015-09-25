@@ -5,6 +5,8 @@
 #include "Graphics.h"
 #include "CollisionEngine.h"
 #include "CollisionComponent.h"
+#include "Tags.h"
+#include "Guid.h"
 
 Alien::Alien()
 {
@@ -37,6 +39,7 @@ void Alien::Init(Input* intp)
 
 	components.insert(std::pair<string, RenderComponent*>(RenderComponent::ComponentName(), render));
 	renderer = render;
+	Graphics::Instance()->RegisterComponent(this, *guid);
 
 	CollisionComponent* col = new CollisionComponent(this);
 	Box box;
@@ -49,7 +52,7 @@ void Alien::Init(Input* intp)
 
 	CollisionEngine::Instance()->AddBody(col);
 
-	tag = "Alien";
+	tag = ALIEN;
 }
 
 void Alien::Update()

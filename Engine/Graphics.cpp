@@ -3,6 +3,7 @@
 #include "Actor.h"
 #include "ModelComponent.h"
 #include "RenderComponent.h"
+#include "Guid.h"
 
 Graphics* Graphics::graphics = NULL;
 
@@ -72,6 +73,31 @@ ID3D11Device* Graphics::GetD3DDevice()
 
 #endif
 
+void Graphics::RegisterComponent(Actor* renderComp, TGUID guid)
+{
+	updateRenders.push_back(guid);
+	allRenderers.insert(std::pair<int, Actor*>(guid.number, renderComp));
+}
+
+void Graphics::DerigesterComponent(TGUID guid)
+{
+	int position = -1;
+	for (int i = 0; i < updateRenders.size(); i++)
+	{
+		if (guid == updateRenders[i])
+		{
+			position = i;
+		}
+	}
+	if (position >= 0)
+	{
+		updateRenders.erase(updateRenders.begin() + position);
+	}
+	
+
+	allRenderers.erase(guid.number);
+}
+
 void Graphics::Shutdown()
 {
 
@@ -107,7 +133,7 @@ Graphics* Graphics::Instance()
 	return graphics;
 }
 
-bool Graphics::Render(vector<Actor*> renders)
+bool Graphics::Render()
 {
 	XMMATRIX worldMatrix, viewMatrix, projectionMatrix;
 	m_Direct3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
@@ -118,12 +144,16 @@ bool Graphics::Render(vector<Actor*> renders)
 	m_camera->GetViewMatrix(viewMatrix);
 	m_Direct3D->GetOrthoMatrix(projectionMatrix);
 
-
-	for (int i = 0; i < renders.size(); i++)
+	for (int i = 0; i < updateRenders.size(); i++)
 	{
-		renders[i]->GetModel()->RenderBuffers(m_Direct3D->GetDeviceContext());
-		renders[i]->GetRenderer()->Render(m_Direct3D->GetDeviceContext(), renders[i]->GetModel()->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix);
+		Actor* updateRender = allRenderers[updateRenders[i].number];
+		if (updateRender != NULL)
+		{
+			updateRender->GetModel()->RenderBuffers(m_Direct3D->GetDeviceContext());
+			updateRender->GetRenderer()->Render(m_Direct3D->GetDeviceContext(), updateRender->GetModel()->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix);
+		}
 	}
+	
 
 	m_Direct3D->EndScene();
 	return true;

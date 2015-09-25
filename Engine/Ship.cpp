@@ -11,8 +11,8 @@
 #include "ShapeComponent.h"
 #include "CollisionComponent.h"
 #include "CollisionEngine.h"
-
-
+#include "Tags.h"
+#include "Guid.h"
 #include <Windows.h>
 
 
@@ -68,10 +68,9 @@ void Ship::Init(Input* input)
 
 
 #if _DX_
-	boxrender
-		->Setup(Graphics::Instance()->GetD3DDevice());
+	boxrender->Setup(Graphics::Instance()->GetD3DDevice());
 #endif
-
+	Graphics::Instance()->RegisterComponent(this, *guid);
 	components.insert(std::pair<string, ShapeComponent*>(ShapeComponent::ComponentName(), boxrender));
 
 	model = boxrender;
@@ -95,7 +94,7 @@ void Ship::Init(Input* input)
 	col->Setup(trans, box);
 	CollisionEngine::Instance()->AddBody(col);
 	components.insert(std::pair<string, CollisionComponent*>(CollisionComponent::ComponentName(), col));
-
+	tag = SHIP;
 }
 
 void Ship::End()

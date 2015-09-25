@@ -1,15 +1,20 @@
 #include "Actor.h"
 #include "RenderComponent.h"
 #include "ModelComponent.h"
+#include "Guid.h"
+
+
+
 
 Actor::Actor()
 {
 	components = unordered_map<string, Component*>();
+	guid = TGUID::CreateGUID();
 }
 
 void Actor::Start()
 {
-
+	
 }
 
 void Actor::Update()

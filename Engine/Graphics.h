@@ -9,6 +9,7 @@
 #include "Model.h"
 #include "Ship.h"
 #include <vector>
+#include <unordered_map>
 
 class Input;
 
@@ -25,10 +26,13 @@ class Graphics
 public:
 	Graphics();
 	~Graphics();
-	static Graphics* Instance();
+	static Graphics* Instance(); 
 	bool Init(int, int, HWND, Input* input);
-	void Shutdown();
-	bool Render(vector<Actor*> renderers);
+	void Shutdown(); 
+	void RegisterComponent(Actor*, TGUID);
+	void DerigesterComponent(TGUID);
+	bool Render();
+
 	static Graphics* graphics;
 private:
 	Camera* m_camera;
@@ -39,4 +43,6 @@ public:
 	ID3D11Device* GetD3DDevice();
 #endif
 	Ship* ship;
+	vector<TGUID> updateRenders;
+	unordered_map<int, Actor*> allRenderers;
 };
