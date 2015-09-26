@@ -23,7 +23,7 @@ void Game::Start(Input* inpt)
 	//player ship
 	Ship* ship = new Ship();
 	ship->Start();
-	ship->Init(_input);
+	ship->Init(_input, this);
 	allActors.push_back(ship);
 
 
@@ -63,4 +63,9 @@ void Game::Render()
 	}
 
 	Graphics::Instance()->Render();
+}
+
+void Game::AddActor(Actor* act)
+{
+	allActors.push_back(act);
 }

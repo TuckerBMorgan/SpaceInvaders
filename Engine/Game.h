@@ -26,4 +26,6 @@ public:
 	void Update();
 
 	void Render();
+
+	void AddActor(Actor* act);
 };

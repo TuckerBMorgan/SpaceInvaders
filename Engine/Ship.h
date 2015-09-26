@@ -16,6 +16,8 @@ using namespace std;
 class Input;
 class Component;
 class TransformComponent;
+class Game;
+class LaserShot;
 
 class Ship : public Actor
 {
@@ -24,21 +26,23 @@ public:
 	~Ship();
 
 public:
-	virtual void Init(Input* input);
+	virtual void Init(Input* input, Game*);
 	virtual void DoDamage(float damageAmout);
 	virtual void Update();
 	virtual void End();
 	Vector3 GetPosition();
 	virtual void OnCollision(Actor*);
+
 protected:
 	Input* inputPtr;
 	float horizontalSpeed;
 	float x, y, z;
 	float health;
 	virtual void OnHealthChange(float amount);
-
+	Game* game;
+	bool test;
 protected:
 	TransformComponent* transform;
-
+	vector<LaserShot*> shots;
 	
 };

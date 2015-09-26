@@ -1,7 +1,5 @@
 
 #include "Graphics.h"
-
-
 #include "Ship.h"
 #include "Input.h"
 #include "Component.h"
@@ -14,11 +12,15 @@
 #include "Tags.h"
 #include "Guid.h"
 #include <Windows.h>
+#include "Game.h"
+#include "LaserShot.h"
+
 
 
 Ship::Ship()
 	: Actor()
 {
+	test = true;
 }
 Ship::~Ship()
 {
@@ -37,7 +39,13 @@ void Ship::Update()
 	}
 	if (inputPtr->IsKeyDown(VK_SPACE))
 	{
-
+		if (test)
+		{
+			LaserShot* las = new LaserShot();
+			las->Init(this);
+			test = false;
+			game->AddActor(las);
+		}
 	}
 }
 
@@ -53,9 +61,11 @@ void Ship::OnHealthChange(float DamageAmount)
 
 }
 
-void Ship::Init(Input* input)
+void Ship::Init(Input* input, Game* _game)
 {
 	inputPtr = input;
+
+	game = _game;
 
 	horizontalSpeed = .1f;
 	name = "MainShip";
@@ -69,7 +79,7 @@ void Ship::Init(Input* input)
 
 	ShapeComponent* boxrender = new ShapeComponent(this, ShapeComponent::ShapeType::Triangle);
 	
-
+	
 
 #if _DX_
 	boxrender->Setup(Graphics::Instance()->GetD3DDevice());
@@ -78,7 +88,6 @@ void Ship::Init(Input* input)
 	components.insert(std::pair<string, ShapeComponent*>(ShapeComponent::ComponentName(), boxrender));
 
 	model = boxrender;
-
 
 	RenderComponent* render = new RenderComponent(this, boxrender);
 #if _DX_
@@ -99,6 +108,7 @@ void Ship::Init(Input* input)
 	CollisionEngine::Instance()->AddBody(col);
 	components.insert(std::pair<string, CollisionComponent*>(CollisionComponent::ComponentName(), col));
 	tag = SHIP;
+
 }
 
 void Ship::End()
