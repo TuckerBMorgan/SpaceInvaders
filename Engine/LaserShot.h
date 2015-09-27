@@ -12,7 +12,7 @@ private:
 
 public:
 	LaserShot();
-	void OnCollision(Actor* otherActor);
+	virtual void OnCollision(Actor* otherActor);
 	virtual void Update();
 	void Init(Actor*);
 };
