@@ -73,18 +73,6 @@ void Game::Update()
 
 void Game::Render()
 {
-
-	for (int i = 0; i < allActors.size(); i++)
-	{
-		if (allActors[i]->GetRenderer() != NULL)
-		{
-			if (allActors[i]->GetModel() != NULL)
-			{
-				renderActor.push_back(allActors[i]);
-			}
-		}
-	}
-
 	Graphics::Instance()->Render();
 }
 

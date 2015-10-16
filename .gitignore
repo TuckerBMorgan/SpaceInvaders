@@ -1,3 +1,6 @@
+# This crap
+*.sdf
+
 # Build results
 Engine/Debug/
 Debug/
