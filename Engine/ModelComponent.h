@@ -17,7 +17,7 @@ class ModelComponent : public Component
 {
 protected:
 	int indexCount;
-
+	int vertexCount;
 #if _DX_
 
 	//Vertex Struct for the D3DX11 graphics version
@@ -47,6 +47,8 @@ public:
 	};
 
 	virtual void ShutdownBuffers();
+
+	virtual void Cleanup() override;
 
 	int GetIndexCount();
 

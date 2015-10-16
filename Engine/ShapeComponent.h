@@ -21,6 +21,7 @@ public:
 		return "ShapeComponent";
 	}
 
+
 #if _DX_
 	void Setup(ID3D11Device*);
 #endif

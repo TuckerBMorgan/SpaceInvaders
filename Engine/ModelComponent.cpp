@@ -47,4 +47,20 @@ int ModelComponent::GetIndexCount()
 {
 	return indexCount;
 }
+
+
+
 #endif
+
+
+void ModelComponent::Cleanup()
+{
+
+#if _DX_
+	ShutdownBuffers();
+#endif
+
+	
+	delete[] vertices;
+
+}

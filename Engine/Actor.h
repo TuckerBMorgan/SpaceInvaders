@@ -17,7 +17,7 @@ protected:
 	unordered_map<string, Component*> components;
 	RenderComponent* renderer;
 	ModelComponent* model;
-
+	bool toClean;
 
 	
 public:
@@ -29,6 +29,16 @@ public:
 	RenderComponent* GetRenderer();
 	ModelComponent* GetModel();
 	virtual void OnCollision(Actor*);
+	bool GetClean()
+	{
+		return toClean;
+	};
+
+	virtual void Cleanup()
+	{
+
+	};
+	void ComponentCleanup();
 	string GetTag()
 	{
 		return tag;

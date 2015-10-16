@@ -10,6 +10,7 @@ Actor::Actor()
 {
 	components = unordered_map<string, Component*>();
 	guid = TGUID::CreateGUID();
+	toClean = false;
 }
 
 void Actor::Start()
@@ -59,4 +60,18 @@ ModelComponent* Actor::GetModel()
 void Actor::OnCollision(Actor *)
 {
 
+}
+#include <queue>
+void Actor::ComponentCleanup()
+{
+	queue<Component*> comps;
+	for (auto it = components.begin(); it != components.end(); ++it)
+	{
+		if (it->second != nullptr)
+		{
+			it->second->Cleanup();
+			comps.push(it->second);
+		}	
+	}
+ 	components.clear();
 }

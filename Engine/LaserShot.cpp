@@ -52,10 +52,10 @@ void LaserShot::Init(Actor* act)
 
 	CollisionComponent* col = new CollisionComponent(this);
 	Box box;
-	box.x1 = 1;
+	box.x1 = 2;
 	box.x2 = 0;
-	box.y1 = 0;
-	box.y2 = 2;
+	box.y1 = 2;
+	box.y2 = 0;
 	col->Setup(trans, box);
 	components.insert(std::pair<string, CollisionComponent*>(CollisionComponent::ComponentName(), col));
 
@@ -74,6 +74,17 @@ void LaserShot::OnCollision(Actor* actor)
 		if (actor->GetTag() == "Alien" || actor->GetTag() == "Ship")
 		{
 			static_cast<Ship*>(actor)->DoDamage(10);
+
+			toClean = true;
 		}
 	}
+}
+
+void LaserShot::Cleanup()
+{
+	CollisionEngine::Instance()->RemoveBody((CollisionComponent*)components[CollisionComponent::ComponentName()]);
+	Graphics::Instance()->DerigesterComponent(*guid);
+	
+	ComponentCleanup();
+
 }

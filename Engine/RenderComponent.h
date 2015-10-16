@@ -43,7 +43,8 @@ public:
 	void Setup(ID3D11Device*);
 	void Render(ID3D11DeviceContext*, int, 
 		XMMATRIX&, XMMATRIX&, XMMATRIX&);
-	
+	virtual void Cleanup() override;
+
 private:
 
 	ID3D11VertexShader* _vertexShader;

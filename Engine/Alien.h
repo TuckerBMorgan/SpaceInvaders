@@ -8,7 +8,9 @@ public:
 	Alien();
 	void Update();
 	void Init(Input* in);
+	
 private: 
 	float health;
+
 
 };

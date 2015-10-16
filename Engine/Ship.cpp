@@ -29,14 +29,18 @@ Ship::~Ship()
 
 void Ship::Update()
 {
+	Vector3* movementAmount = new Vector3(horizontalSpeed, 0,0);
 	if (inputPtr->IsKeyDown(VK_RIGHT))
 	{
-		transform->SetPositionU(transform->GetPositionU() += Vector3(horizontalSpeed,0,0));
+		transform->SetPositionU(transform->GetPositionU() += *movementAmount);
 	}
 	if (inputPtr->IsKeyDown(VK_LEFT))
 	{
-		transform->SetPositionU(transform->GetPositionU() -= Vector3(horizontalSpeed, 0, 0));
+		transform->SetPositionU(transform->GetPositionU() -= *movementAmount);
 	}
+
+	delete movementAmount;
+
 	if (inputPtr->IsKeyDown(VK_SPACE))
 	{
 		if (test)
@@ -46,6 +50,10 @@ void Ship::Update()
 			test = false;
 			game->AddActor(las);
 		}
+	}
+	else if (!inputPtr->IsKeyDown(VK_SPACE))
+	{
+		test = true;
 	}
 }
 
@@ -85,6 +93,7 @@ void Ship::Init(Input* input, Game* _game)
 	boxrender->Setup(Graphics::Instance()->GetD3DDevice());
 #endif
 	Graphics::Instance()->RegisterComponent(this, *guid);
+	
 	components.insert(std::pair<string, ShapeComponent*>(ShapeComponent::ComponentName(), boxrender));
 
 	model = boxrender;
@@ -123,8 +132,17 @@ Vector3 Ship::GetPosition()
 
 void Ship::OnCollision(Actor* otherActor)
 {
+
 	if (otherActor->GetTag() == "Alien")
 	{
 		health -= 10;
 	}
+}
+
+void Ship::Cleanup()
+{
+	delete transform;
+	inputPtr = nullptr;
+	game = nullptr;
+
 }

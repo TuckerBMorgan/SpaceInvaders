@@ -10,6 +10,7 @@
 #include "Ship.h"
 #include <vector>
 #include <unordered_map>
+#include <string>
 
 class Input;
 
@@ -18,6 +19,7 @@ const bool VSYNC_ENABLED = true;
 const float SCREEN_DEPTH = 1000.0f;
 const float SCREEN_NEAR = 0.1f;
 
+using namespace std;
 
 class Actor;
 
@@ -41,6 +43,8 @@ private:
 	D3D* m_Direct3D;
 public:
 	ID3D11Device* GetD3DDevice();
+	void GetShaderAndLayout(string name, ID3D11VertexShader*, ID3D11PixelShader*, ID3D11InputLayout*);
+
 #endif
 	Ship* ship;
 	vector<TGUID> updateRenders;

@@ -22,6 +22,7 @@ void ShapeComponent::Setup(ID3D11Device* device)
 	{
 	case ShapeType::Box:
 		vertices = new Vertex[4];
+		vertexCount = 4;
 
 		indices = new unsigned long[6];
 
@@ -73,7 +74,7 @@ void ShapeComponent::Setup(ID3D11Device* device)
 		break;
 
 	case ShapeType::Triangle:
-		
+		vertexCount = 3;
 		vertices = new Vertex[3];
 
 		indices = new unsigned long[3];

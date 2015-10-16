@@ -46,6 +46,7 @@ public:
 
 
 	void Setup(TransformComponent*, Box box);
+	virtual void Cleanup() override;
 
 private:
 	TransformComponent* transform;

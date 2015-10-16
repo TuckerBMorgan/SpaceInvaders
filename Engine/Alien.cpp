@@ -57,5 +57,7 @@ void Alien::Init(Input* intp)
 
 void Alien::Update()
 {
-	transform->SetPositionU(transform->GetPositionU() += Vector3(0,-0.1f,0));
+	Vector3* movementAmount = new Vector3(0, -0.1f, 0);
+	transform->SetPositionU(transform->GetPositionU() += *movementAmount);
+	delete movementAmount;
 }

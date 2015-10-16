@@ -10,6 +10,7 @@ class CollisionEngine
 	CollisionEngine();
 public:
 	void AddBody(CollisionComponent*);
+	void RemoveBody(CollisionComponent*);
 	void Update();
 	void Start()
 	{

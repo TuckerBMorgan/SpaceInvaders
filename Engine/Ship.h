@@ -28,10 +28,11 @@ public:
 public:
 	virtual void Init(Input* input, Game*);
 	virtual void DoDamage(float damageAmout);
-	virtual void Update();
+	virtual void Update() override;
 	virtual void End();
 	Vector3 GetPosition();
-	virtual void OnCollision(Actor*);
+	virtual void OnCollision(Actor*) override;
+	virtual void Cleanup() override;
 
 protected:
 	Input* inputPtr;

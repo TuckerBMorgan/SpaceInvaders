@@ -15,6 +15,25 @@ void CollisionEngine::AddBody(CollisionComponent* colcomp)
 	bodies.push_back(colcomp);
 }
 
+void CollisionEngine::RemoveBody(CollisionComponent* colcomp)
+{
+	int index = -1;
+
+	for (int i = 0; i < bodies.size(); i++)
+	{
+		if (colcomp == bodies[i])
+		{
+			index = i;
+		}
+	}
+
+	if (index > 0)
+	{
+		bodies.erase(bodies.begin() + index);
+	}
+
+}
+
 CollisionEngine* CollisionEngine::Instance()
 {
 	if (_instance == NULL)
@@ -26,6 +45,9 @@ CollisionEngine* CollisionEngine::Instance()
 
 void CollisionEngine::Update()
 {
+	float bodiessize = bodies.size();
+	
+
 	for (int i = 0; i < bodies.size(); i++)
 	{
 		CollisionComponent* thisBody = bodies[i];

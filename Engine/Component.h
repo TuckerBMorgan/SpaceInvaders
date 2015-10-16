@@ -23,4 +23,9 @@ public:
 	{
 		return _actor;
 	}
+
+	virtual void Cleanup()
+	{
+
+	}
 };

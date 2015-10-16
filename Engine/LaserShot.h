@@ -14,5 +14,6 @@ public:
 	LaserShot();
 	virtual void OnCollision(Actor* otherActor);
 	virtual void Update();
+	virtual void Cleanup() override;
 	void Init(Actor*);
 };

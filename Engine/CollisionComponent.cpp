@@ -21,3 +21,8 @@ Box CollisionComponent::GetBox()
 	useBox.y2 = bounds.y2 - transform->GetPositionU().y;
 	return useBox;
 }
+
+void CollisionComponent::Cleanup()
+{
+	delete transform;
+}

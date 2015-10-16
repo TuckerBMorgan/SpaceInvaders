@@ -11,6 +11,8 @@
 Game::Game()
 {
 	allActors = vector<Actor*>();
+	removeIndexs = queue<int>();
+	renderActor = vector<Actor*>();
 }
 
 #if _DX_
@@ -45,11 +47,32 @@ void Game::Update()
 	{
 		allActors[i]->Update();
 	}
+
+	for (int i = 0; i < allActors.size(); i++)
+	{
+		if (allActors[i]->GetClean())
+		{
+			removeIndexs.emplace(i);
+		}
+	}
+
+	int removeCount = 0;
+	while (removeIndexs.size() > 0)
+	{
+		int index = removeIndexs.front() - removeCount;
+		removeIndexs.pop();
+		allActors[index]->Cleanup();
+		Actor* act = allActors[index];
+		allActors.erase(allActors.begin() + index);
+		delete act;
+		removeCount++;
+		act = nullptr;
+	}
+	
 }
 
 void Game::Render()
 {
-	vector<Actor*> renderActor;
 
 	for (int i = 0; i < allActors.size(); i++)
 	{

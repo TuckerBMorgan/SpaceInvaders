@@ -116,3 +116,12 @@ void RenderComponent::Shutdown()
 {
 
 }
+
+void RenderComponent::Cleanup()
+{
+	_vertexShader->Release();
+	_pixelShader->Release();
+	_layout->Release();
+	_matrixBuffer->Release();
+	
+}
