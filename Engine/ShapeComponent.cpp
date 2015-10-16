@@ -27,7 +27,7 @@ void ShapeComponent::Setup(ID3D11Device* device)
 		indices = new unsigned long[6];
 
 		vertices[0].position = XMFLOAT3(0.0f, 0.0f, 0.0f);
-		vertices[0].color = XMFLOAT4(0.4, 0.5f, 0.3f, 1.0f);
+		vertices[0].color = XMFLOAT4(1.0f  , 0.5f, 0.3f, 1.0f);
 
 		vertices[1].position = XMFLOAT3(0.0f, 2.0f, 0.0f);
 		vertices[1].color = XMFLOAT4(0.4, 0.5f, 0.3f, 1.0f);

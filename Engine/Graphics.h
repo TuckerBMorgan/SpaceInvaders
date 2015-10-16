@@ -43,8 +43,7 @@ private:
 	D3D* m_Direct3D;
 public:
 	ID3D11Device* GetD3DDevice();
-	void GetShaderAndLayout(string name, ID3D11VertexShader*, ID3D11PixelShader*, ID3D11InputLayout*);
-
+	
 #endif
 	Ship* ship;
 	vector<TGUID> updateRenders;

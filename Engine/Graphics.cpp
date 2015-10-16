@@ -133,17 +133,6 @@ Graphics* Graphics::Instance()
 	return graphics;
 }
 
-ID3D11VertexShader* Graphics::GetVertexShader(string name)
-{
-
-	return nullptr;
-}
-
-ID3D11PixelShader* Graphics::GetPixelShader(string name)
-{
-
-	return nullptr;
-}
 
 bool Graphics::Render()
 {
