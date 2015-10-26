@@ -113,10 +113,18 @@ bool System::Frame()
 	{
 		return false;
 	}
-
+	SYSTEMTIME st;
+	GetLocalTime(&st);
 	m_game->Update();
 	m_game->Render();
 
+	SYSTEMTIME aft;
+	GetLocalTime(&aft);
+	if ((aft.wMilliseconds - st.wMilliseconds) < 16)
+	{
+		float dif = 16 - (aft.wMilliseconds - st.wMilliseconds);
+	//	Sleep(dif);
+	}
 
 	return true;
 }

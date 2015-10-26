@@ -25,9 +25,9 @@ void LaserShot::Init(Actor* act)
 
 	TransformComponent* actTra = static_cast<TransformComponent*>(act->GetComponent(TransformComponent::ComponentName()));
 
-	transform->SetPositionU(Vector3(0, actTra->GetPositionU().y + 10, 0));
+	transform->SetPositionU(Vector3(actTra->GetPositionU().x, actTra->GetPositionU().y + 1.0f, 0));
 	transform->SetRoationU(Vector3(0, 0, 0));
-	transform->SetScaleU(Vector3(1, 1, 1));
+	transform->SetScaleU(Vector3(1.0f, 1.0f, 1.0f));
 
 	ShapeComponent* shape = new ShapeComponent(this, ShapeComponent::ShapeComponent::Box);
 
@@ -52,10 +52,10 @@ void LaserShot::Init(Actor* act)
 
 	CollisionComponent* col = new CollisionComponent(this);
 	Box box;
-	box.x1 = 2;
-	box.x2 = 0;
-	box.y1 = 2;
-	box.y2 = 0;
+	box.x1 = 2.0f;
+	box.x2 = 0.0f;
+	box.y1 = 2.0f;
+	box.y2 = 0.0f;
 	col->Setup(trans, box);
 	components.insert(std::pair<string, CollisionComponent*>(CollisionComponent::ComponentName(), col));
 

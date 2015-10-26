@@ -41,7 +41,8 @@ void Game::Start(Input* inpt)
 #endif
 void Game::Update()
 {
-	
+	SYSTEMTIME st;
+	GetLocalTime(&st);
 	CollisionEngine::Instance()->Update();
 	for (int i = 0; i < allActors.size(); i++)
 	{
@@ -55,7 +56,7 @@ void Game::Update()
 			removeIndexs.emplace(i);
 		}
 	}
-
+	
 	int removeCount = 0;
 	while (removeIndexs.size() > 0)
 	{
@@ -68,6 +69,7 @@ void Game::Update()
 		removeCount++;
 		act = nullptr;
 	}
+
 	
 }
 

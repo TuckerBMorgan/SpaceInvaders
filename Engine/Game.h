@@ -1,7 +1,8 @@
 #pragma once
 #include <vector>
 #include <queue>
-
+#include <time.h>
+#include <ctime>
 #if _DX_
 #include <d3d11.h>
 #endif
@@ -17,7 +18,8 @@ class Game
 	vector<Actor*> allActors;
 	vector<Actor*> renderActor;
 	queue<int> removeIndexs;
-
+	time_t startFrameTime;
+	struct tm now;
 #if _DX_
 
 #endif

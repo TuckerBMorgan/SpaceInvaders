@@ -57,7 +57,7 @@ void CollisionEngine::Update()
 			{
 				if (bodies[bods]->GetBox().isBoxColliding(&thisBody->GetBox()))
 				{
-					thisBody->GetActor()->OnCollision(bodies[bods]->GetActor());
+ 					thisBody->GetActor()->OnCollision(bodies[bods]->GetActor());
 				}
 			}
 		}
